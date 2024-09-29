@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block title %}Deleted Page{% endblock  %}
+
+{% block css_files %}
+<link rel="stylesheet" href="{% static "lists/delete.css" %}">
+{% endblock css_files %}
+
+
+{% block content %}
+    <h2>This Item will not be returned<br />
+        Are You sure you want to delete it? </h2>
+
+<form method="POST">
+    {% csrf_token %}
+    <p>Sure?</p>
+        <button>Yes</button>
+        <div class="back-link">
+            <a href="{% url "task_list" %}">No</a>
+        </div>
+        </form>
+
+
+{% endblock  %}

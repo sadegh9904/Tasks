@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load jalali_tags %}
+{% load static %}
+
+{% block css_files %}
+<link rel="stylesheet" href="{% static "lists/form.css" %}">
+{% endblock css_files %}
+<p>Deadline: {{ task.deadline|to_jalali:'%y/%m/%d _ %H:%M:%S'}}</p>
+
+
+{% block title %}Form For Add Job{% endblock  %}
+
+
+{% block content %}
+    <h1>Create or edit Jobs</h1>
+    <form method="post">
+        {% csrf_token %}
+        <div class="form-control {% if form.errors %} error {% endif %}">
+            {{ form.as_p }}
+            <input type="submit" value="Save">
+            <button><a href="{% url "task_list" %}">Cancel</a></button>
+        </div>
+    </form>
+
+    <link rel="stylesheet" href="{% static 'admin/jquery.ui.datepicker.jalali/themes/base/jquery-ui.min.css' %}">
+	<script src="{% static 'admin/js/django_jalali.min.js' %}"></script>
+
+
+{% endblock  %}

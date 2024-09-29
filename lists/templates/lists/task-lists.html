@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load jalali_tags %}
+{% load static %}
+
+
+{% block title %}
+TO DO LISTS
+{% endblock  %}
+
+{% block css_files %}
+<link rel="stylesheet" href="{% static "lists/style.css" %}">
+{% endblock  %}
+
+{% block content %}
+<div class="todo-container">
+    <h1>To Do Lists</h1>
+    <a  class="add-job-button" href="{% url "task_add" %}">Add New Job</a>
+    <ul class="todo-list">
+        {% for field in tasks %}
+            <li class="todo-item">
+                <strong>Job :  </strong>{{ field.name }}<br/>
+                <strong>description :  </strong><p>{{ field.description }}</p><br />
+                <strong>created at :  </strong>{{ field.get_jalali }}<br />
+                <strong>deadline :  </strong>{{ field.deadline|to_jalali:'%Y/%m/%d _ %H:%M:%S'}}<br />
+                <div class="action-links">
+                    <a class="edit_link" href="{% url "task_edit" field.pk %}">Edit</a>
+                    <br />
+                    <a class="delete_link" href="{% url "task_delete" field.pk %}">Delete<a/>
+                </div>
+            </li>
+        {% endfor %}
+        </ul>
+    </div>
+{% endblock  %}

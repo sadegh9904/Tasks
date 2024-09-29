@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block title %}Thank You{% endblock  %}
+{% block css_files %}
+    <link rel="stylesheet" href="{% static "lists/thank-you.css" %}">
+{% endblock css_files %}
+
+
+
+
+{% block content %}
+<section id="welcome">
+    <h1>Thank You !</h1>
+    <p>{{ massage }}</p>
+    <a href="{% url "task_list" %}">Back to the List</a>
+</section>
+    {% endblock  %}
