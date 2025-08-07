@@ -1,7 +1,9 @@
+from typing import Any
 from django import forms
 from . models import TaskView
 from jalali_date.fields import JalaliDateField,SplitJalaliDateTimeField
 from jalali_date.widgets import AdminJalaliDateWidget,AdminSplitJalaliDateTime
+from django.core.exceptions import ValidationError
 
 
 
@@ -25,4 +27,3 @@ class TaskForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(TaskForm,self).__init__(*args, **kwargs)
         self.fields["deadline"] = SplitJalaliDateTimeField(label=("deadline"), widget=AdminSplitJalaliDateTime)
-    

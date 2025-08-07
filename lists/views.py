@@ -19,7 +19,7 @@ class TaskCreateView(CreateView):
     form_class = TaskForm
     template_name = "lists/form-list.html"
     success_url = "/thank-you"
-
+    
 
     
 

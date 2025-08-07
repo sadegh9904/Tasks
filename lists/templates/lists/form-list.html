@@ -17,6 +17,17 @@
         {% csrf_token %}
         <div class="form-control {% if form.errors %} error {% endif %}">
             {{ form.as_p }}
+            {% if form.errors %}
+                <ul>
+                    {% for filed, errors in form.errors.items %}
+                        {% for error in errors %}
+                            <li> filed 
+                                {{ form.errors }} : {{ error }}
+                            </li>
+                        {% endfor %}
+                    {% endfor %}
+                </ul>
+            {% endif %}
             <input type="submit" value="Save">
             <button><a href="{% url "task_list" %}">Cancel</a></button>
         </div>
